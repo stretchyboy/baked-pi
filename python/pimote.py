@@ -3,7 +3,8 @@
 
 #import the required modules
 import RPi.GPIO as GPIO
-import time                                     
+import time            
+                       
 
 # set the pins numbering mode
 GPIO.setmode(GPIO.BOARD)
@@ -34,18 +35,22 @@ GPIO.output (16, False)
 GPIO.output (13, False)
 
 class PiMote:
-    def __init__(self, on=False):
-        self.power("all", on)
+    def __init__(self, forceoff=False):
+        if forceoff == True:
+            self.power(0, False)
     
 
-    def power(self, socket="all", on=True):
-        if socket == "all":
+    def power(self, socket=0, on=True):
+        
+        if socket == 0:
             GPIO.output (11, True)
             GPIO.output (15, True)
             GPIO.output (16, False)    
         
         else: 
-            socket = int(socket, 10)
+            if isinstance(socket, str):
+                socket = int(socket, 10)
+            	            
             GPIO.output (16, True)
             
             GPIO.output (11, socket < 3)
@@ -64,6 +69,7 @@ class PiMote:
         time.sleep(0.25)
         # Disable the modulator
         GPIO.output (22, False)
+	return on
     
 
 if __name__ == "__main__":
@@ -135,12 +141,12 @@ if __name__ == "__main__":
             raw_input('hit return key to send ALL ON code')
             # Set K0-K3
             print "sending code 1011 ALL on"
-            pm.power("all", True)
+            pm.power(0, True)
             
             raw_input('hit return key to send ALL OFF code')
             # Set K0-K3
             print "sending code 0011 All off"
-            pm.power("all", False)
+            pm.power(0, False)
             
     # Clean up the GPIOs for next time
     except KeyboardInterrupt:

@@ -30,12 +30,12 @@ try:
         raw_input('hit return key to send ALL ON code')
         # Set K0-K3
         print "sending code 1011 ALL on"
-        pm.power("all", True)
+        pm.power(0, True)
         
         raw_input('hit return key to send ALL OFF code')
         # Set K0-K3
         print "sending code 0011 All off"
-        pm.power("all", False)
+        pm.power(0, False)
         
 # Clean up the GPIOs for next time
 except KeyboardInterrupt:
