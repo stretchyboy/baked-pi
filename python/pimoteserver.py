@@ -1,6 +1,8 @@
 from pimote import PiMote
 import cherrypy
 
+#pip install cherrypy
+
 class PiMoteServer(object):
     @cherrypy.expose
     def index(self):
