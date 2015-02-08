@@ -34,16 +34,12 @@ GPIO.output (16, False)
 GPIO.output (13, False)
 
 class PiMote:
-    def __init__(self):
-        self.x = x
-        self.y = y
-        self.z = z
+    def __init__(self, on=False):
+        self.power("all", on)
     
-    def length(self):
-        return self.lengthSqr ** .5
 
-    def power(socket="all", on=True):
-        if (socket="all")
+    def power(self, socket="all", on=True):
+        if socket == "all":
             GPIO.output (11, True)
             GPIO.output (15, True)
             GPIO.output (16, False)    
@@ -51,28 +47,10 @@ class PiMote:
         else: 
             GPIO.output (16, True)
             
-            GPIO.output (11, socket >2)
-            GPIO.output (15, (socket + q ))
+            GPIO.output (11, socket < 3)
+            GPIO.output (15, (socket % 2) > 0)
                     
-            #switch (socket):
-            #    case 1:
-            #        GPIO.output (11, True)
-            #        GPIO.output (15, True)
-            #        break;
-            #    case 2:
-            #        GPIO.output (11, False)
-            #        GPIO.output (15, True)
-            #        break;
-            #    case 3:
-            #        GPIO.output (11, True)
-            #        GPIO.output (15, False)
-            #        break;
-            #    case 4:
-            #        GPIO.output (11, False)
-            #        GPIO.output (15, False)
-            #        break;
-            #    
-        if (on):    
+        if on:    
             GPIO.output (13, True)
         else:
             GPIO.output (13, False)
