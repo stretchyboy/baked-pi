@@ -10,7 +10,21 @@ class PiMoteServer(object):
 
     @cherrypy.expose
     def index(self):
-        return "Hello world!"
+        out  = "<form action=\"power\">"
+        out += "Socket<select name=\"socket\">"
+        out += "<option value=\"0\">All</option>"
+        out += "<option value=\"1\">1</option>"
+        out += "<option value=\"2\">2</option>"
+        out += "<option value=\"3\">3</option>"
+        out += "<option value=\"4\">4</option>"
+        out += "</select>"
+        out += " <select name=\"on\">"
+        out += "<option value=\"1\">On</option>"
+        out += "<option value=\"0\">Off</option>"
+        out += "</select>"
+        out += "<br /><input type=\"submit\" />"
+        out += "</form>"
+        return out
 
     @cherrypy.expose
     def power(self, socket=0, on="none"):
