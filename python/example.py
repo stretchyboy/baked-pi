@@ -1,6 +1,6 @@
 #python library use example
 
-from pi-mote import PiMote
+from pimote import PiMote
 
 pm = PiMote()
 

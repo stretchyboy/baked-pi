@@ -9,7 +9,7 @@ class PiMoteServer(object):
         return "Hello world!"
 
     @cherrypy.expose
-    def power(socket="all", on=True):
+    def power(self, socket="all", on=True):
         pm = PiMote()
         pm.power(socket, on)
         return 'OK'

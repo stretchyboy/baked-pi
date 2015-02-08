@@ -45,6 +45,7 @@ class PiMote:
             GPIO.output (16, False)    
         
         else: 
+            socket = int(socket, 10)
             GPIO.output (16, True)
             
             GPIO.output (11, socket < 3)
